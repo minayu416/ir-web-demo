@@ -1,0 +1,57 @@
+#logo a{display:block;width:114px;height:25px;text-indent:-9999px;background:transparent url(../Img/ShihChien_Logo.png)
+no-repeat;margin:0px 0px 0px 50px;}
+
+nav {
+float:center;
+　//margin:5px 0px 0px 0px; 
+  padding:0px;
+　//height:30%;
+  background-color: #fff;
+  
+  display: block;
+  
+  //width: 70%;
+  
+  
+}
+
+  nav ul {
+background-color:black;
+    margin: 0;
+    padding: 0;
+  }
+
+    nav ul li {
+      display:inline-block;
+      list-style-type: none;
+      
+      -webkit-transition: all 0.2s;
+        -moz-transition: all 0.2s;
+        -ms-transition: all 0.2s;
+        -o-transition: all 0.2s;
+        transition: all 0.2s; 
+    }
+      
+      	  
+	  	
+      nav > ul > li > a {
+        color: white;
+        display: block;
+        line-height: 56px;
+        padding: 0 24px;
+        text-decoration: none;
+      }
+
+        nav > ul > li:hover {
+          background-color: gray;
+        }
+
+        nav > ul > li:hover > a {
+          color: rgb( 255, 255, 255 );
+        }
+
+.li_active{
+background-color: gray;
+}	  
+	  
+

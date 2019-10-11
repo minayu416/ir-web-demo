@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+	<title>所有資料 | IR</title>
+    <link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/bootstrap/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<script src="../static/bootstrap/js/jquery.js"></script>
+	<script src="../static/bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+<style>
+	.all_font{
+		font-family:Microsoft JhengHei;
+		background-color:#eee;
+	}
+	.h1 h2 h3 h4{
+		font-family:Microsoft JhengHei;
+	}
+	.title-logo{
+		font-size:20px;
+	}
+	.carousel-control.right{
+		background-image: none;
+	}
+	.carousel-control.left{
+		background-image: none;
+	}
+	.intro-social-buttons2{
+		margin-top:10px;
+	}
+	.top-bar{
+		margin-top:70px;
+	}
+	.top-bar2{
+		margin-top:15px;
+	}
+	.top-bar3{
+		margin-top:50px;
+	}
+	.caption2{
+		padding-right: 5px;
+		padding-left: 15px;
+	}
+	.caption3{
+		margin:4px;
+	}
+</style>
+
+<body class="all_font">
+
+	<!--導覽列-->
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/">作品Demo網站</a>
+			</div>
+		<!--	<div class="collapse navbar-collapse" id="myNavbar">
+        <!--需要做一個開關-->
+		<!--		<ul class="nav navbar-nav">
+					<li><a href="news.html">關於IR</a></li>
+					<li><a href="about.html">公開資訊</a></li>
+					<li><a href="list.html">議題分析</a></li>
+					<li class="active"><a href="list.html">IR資料庫</a></li>
+					<li><a href="list.html">資源分析</a></li>
+				</ul> -->
+        <!--需要先關掉，改天按著index寫一下-->
+				<!--<ul class="nav navbar-nav navbar-right">
+					<li><a href="account.html"><span class="glyphicon glyphicon-user"></span> [username]</a></li>
+					<li><a href="login.html"><span class=""></span> 登入</a></li>
+				</ul>-->
+			</div>
+		</div>
+	</nav>
+
+	<!--分隔1-->
+	<div class="top-bar"></div>
+
+	<!--課程一覽-->
+	<div class="container">
+	<div class="container">
+			<h2>部落格分類</h2>
+			<div class="row">
+				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+					<div class="panel panel-info">
+					  <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+						<h4 class="panel-title">
+						  <!--<a>入學端</a>-->
+              <a>資訊那些事</a>
+						</h4>
+					  </div>
+					  <div id="collapse1" class="panel-collapse collapse in">
+						<div class="panel-body">
+              {% for topics in enter %}
+
+              	<a href="{{ topics.tar_web }}" target="_blank"><p>{{ topics.title }}</p></a>
+
+              {% endfor %}
+						</div>
+					  </div>
+					</div>
+				</div>
+       
+				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+					<div class="panel panel-warning">
+					  <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+						<h4 class="panel-title">
+						  <a>旅遊日記</a>
+						</h4>
+					  </div>
+					  <div id="collapse2" class="panel-collapse collapse in">
+						<div class="panel-body">
+              {% for topics in inschool %}
+
+              	<a href="{{ topics.tar_web }}" target="_blank"><p>{{ topics.title }}</p></a>
+
+              {% endfor %}
+						</div>
+					  </div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+					<div class="panel panel-danger">
+					  <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+						<h4 class="panel-title">
+						  <a>外語相關</a>
+						</h4>
+					  </div>
+					  <div id="collapse3" class="panel-collapse collapse in">
+						<div class="panel-body">
+              {% for topics in graduate %}
+
+              	<a href="{{ topics.tar_web }}" target="_blank"><p>{{ topics.title }}</p></a>
+
+              {% endfor %}
+						</div>
+					  </div>
+					</div>
+				</div>
+			</div>
+	</div>
+<!--
+		<div class="text-center">
+			<nav>
+				<ul class="pagination">
+				<li><a href="#"><span aria‐hidden="true">&laquo;</span><span class="sr‐only"></span></a></li>
+				<li class="active"><a href="#">1</a></li>
+				<li class="disabled"><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">5</a></li>
+				<li><a href="#"><span aria‐hidden="true">&raquo;</span><span class="sr‐only"></span></a></li>
+				</ul>
+			</nav>
+		</div>-->
+	</div>
+
+	<!--分隔3-->
+	<div class="top-bar3"></div>
+
+	<!--尾端標題-->
+	<div class="banner">
+		<div class="container">
+			<div class="row">
+				<a href="/">
+					<div class="col-md-12 footer-h2 footer-link" >
+						<h2>作品Demo網站</h2>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<!--尾端-->
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<!--<ul class="list-inline">
+						<li>
+							<a href="news.html">最新消息</a>
+						</li>
+						<li class="footer-menu-divider">&sdot;</li>
+						<li>
+							<a href="about.html">關於學程</a>
+						</li>
+						<li class="footer-menu-divider">&sdot;</li>
+						<li>
+							<a href="list.html">課程一覽</a>
+						</li>
+						<li class="footer-menu-divider">&sdot;</li>
+						<li>
+							<a href="contact.html">聯絡我們</a>
+						</li>
+					</ul>-->
+					<p class="copyright text-muted small">Copyright &copy; 月水瓶 @MINA 的人生研究室 2017. All Rights Reserved</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>新生入學地區分布</title>
+        <meta charset="utf-8">
+		<link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+	</head>
+	<body style="background-color:#f1f1f1;">
+		<div class="container" style="margin-top: 20px;">
+			<div class="row">
+				<div class="col-lg-12" style="">
+					<div class="panel panel-default">
+						<div class="panel-body">							
+							<form class="form-inline">
+								<div class="form-group">
+									<label for="semester">學年度 : </label>			
+									<select class="form-control" id="semester" name="semester" required>
+									</select>
+								</div>
+								<div class="form-group" style="margin-left: 20px;">
+									<label for="pwd">入學管道 : </label>
+									<label class="checkbox-inline">
+										<input type="checkbox" value="0" id="m1" name="m1">申請入學
+									</label>
+									<label class="checkbox-inline">
+										<input type="checkbox" value="1" id="m2" name="m2">繁星推薦
+									</label>
+									<label class="checkbox-inline">
+										<input type="checkbox" value="2" id="m3" name="m3">指定分發
+									</label>
+								</div>
+									<button type="submit" class="btn btn-primary" style="float:right;">查詢</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12" align="center">
+					<div class="panel panel-default">
+						<div class="panel-body" align="center">
+							<svg width="70%" height="600px" style="display: inline-block; margin-top: 30px;" class="my-svg">
+								<g id="pathCanvas"></g>
+								<defs>
+									<linearGradient id="Gradient1">
+										<stop class="stop1" offset="0%"/>
+										<stop class="stop3" offset="100%"/>
+									</linearGradient>
+									<style type="text/css"><![CDATA[
+										#rect1 { fill: url(#Gradient1); }
+										.stop1 { stop-color: #e6e6ff; }
+										.stop2 { stop-color: black; stop-opacity: 0; }
+										.stop3 { stop-color: #6666ff; }
+									  ]]></style>
+								</defs>
+								<rect id="rect1" x="50" y="465" rx="2" ry="2" width="200" height="20"/>
+								<text x="50" y="503" width="20" height="20">少</text>
+								<text x="235" y="503" width="20" height="20">多</text>
+							</svg>
+							<div id='panel' style="display:none; padding:5px; background-color:white; border: #8766E3 2px solid; border-radius:5px; z-index:100;">
+								<span id='title'></span><br/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12" align="center">
+					<div class="panel panel-default">
+						<div class="panel-body" align="center">
+							<div id="chartContainer" style="width:100%; height:500px; display: inline-block; margin: 0px 0px 0px 0px;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<script src="/static/js/jquery-3.1.0.min.js"></script>
+		<script type="text/javascript" src="/static/js/d3.v3.min.js"></script>
+		<script type="text/javascript" src="/static/js/topojson.v1.min.js"></script>
+		<script type="text/javascript" src="/static/canvasjs/canvasjs.min.js"></script>
+		<script>
+			function getParameterByName(name, url) {
+				if (!url) url = window.location.href;
+				name = name.replace(/[\[\]]/g, "\\$&");
+				var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+				results = regex.exec(url);
+				if (!results) return null;
+				if (!results[2]) return '';
+				return decodeURIComponent(results[2].replace(/\+/g, " "));
+			}
+			
+			//查詢列初始化
+			var m1 = getParameterByName("m1");
+			var m2 = getParameterByName("m2");
+			var m3 = getParameterByName("m3");
+			var semester = getParameterByName("semester");
+			if(m1 != null) document.getElementById("m1").checked = true;
+			if(m2 != null) document.getElementById("m2").checked = true;
+			if(m3 != null) document.getElementById("m3").checked = true;
+			
+			//學年度初始化
+			var semesterList = '{{ semester|safe }}';
+			semesterList = JSON.parse(semesterList);
+			var text = "<option value=''>請選擇</option>";
+			for(var i = 0; i < semesterList.length; i++)
+				text += "<option value=" + semesterList[i] +">" + semesterList[i] + "</option>";
+			document.getElementById("semester").innerHTML = text;
+
+			if(semester == null)
+				document.getElementById("semester").value = "";
+			else
+				document.getElementById("semester").value = semester;
+
+			var dataPoints = '{{ data|safe }}';
+			dataPoints = JSON.parse(dataPoints);
+			var type = "county";
+			var scale = 6000;
+			var Cname = "C_Name";
+			var mouseX;
+			var mouseY;
+			
+			d3.json("/static/" + type + ".json", function(topodata) {
+				// 這裡要注意的是 topodata.objects["county"] 中的 "county" 為原本 shp 的檔名
+				this.topodata = topodata;
+				features = topojson.feature(topodata, topodata.objects[type]).features;
+				path = d3.geo.path().projection( // 路徑產生器
+					d3.geo.mercator().center([121,24]).scale(scale) // 座標變換函式
+				);
+			
+				d3.select("#pathCanvas").selectAll("path").data(features).enter().append("path").attr({
+					d: path,
+					name: function(d){
+						return d.properties[Cname];
+					},
+					fill:'#e6e6ff'
+				});
+				
+				//填入顏色
+				$('path').each(function() {
+					//alert($(this).attr("name") + " | " + dataPoints[i][0]);
+					var value = dataPoints[$(this).attr( "name" )];
+					if (value < 51)
+						$(this).attr("fill", '#e6e6ff');
+					else if (value < 101)     
+						$(this).attr("fill", '#ccccff');
+					else if (value < 151)     
+						$(this).attr("fill", '#b3b3ff');
+					else if (value < 201)     
+						$(this).attr("fill", '#9999ff');
+					else if (value < 251)     
+						$(this).attr("fill", '#8080ff');
+					else if (value >= 251)     
+						$(this).attr("fill", '#6666ff');
+				}) 
+				
+				
+				d3.select("#pathCanvas").append("path") //縣市/行政區界線
+					.datum(topojson.mesh(topodata, topodata.objects[type], function(a, b) { return a !== b ; }))
+					.attr("d", path)
+					.attr("class", "subunit-boundary");
+					
+				
+				d3.select("#pathCanvas").selectAll("path").on("mouseenter", function() { // title div 顯示滑鼠所指向的縣市/行政區
+					fill = $(this).attr("fill");
+					$(this).attr("fill", '#c1c2d0');
+					if($(this).attr("class") != "subunit-boundary")
+						$('#title').html($(this).attr("name") + ": " + dataPoints[$(this).attr("name")]);
+				}).on("mouseout", function() {
+					$(this).attr("fill", fill);
+				});
+				
+				$("path").mouseover(function(){ //panel 區塊跟隨滑鼠移動
+					mouseX = event.pageX; 
+					mouseY = event.pageY; 
+					$("path").mousemove( function(e) {
+						mouseX = e.pageX; 
+						mouseY = e.pageY;
+					});  
+					$('#panel').css({'position':'fixed','top':mouseY,'left':mouseX}).fadeIn('fast');
+				}); 
+			});
+			
+			var title = semester + "學年度入學地區分布";
+			var axisY = "人數";
+			var axisX = "地區";
+			var items = Object.keys(dataPoints).map(function(key) {
+				return [key, dataPoints[key]];
+			});
+			items.sort(function(first, second) {
+				return second[1] - first[1];
+			});	
+			var data = new Array;
+			for(var i = 0; i < items.length; i++){
+				var dic = {};
+				dic["label"] = items[i].toString().split(",")[0];
+				dic["y"] = parseInt(items[i].toString().split(",")[1]);
+				data.push(dic);
+			}
+
+			var chart = new CanvasJS.Chart("chartContainer",
+					{
+						title:{
+							text: title,
+							fontFamily: "Microsoft JhengHei",
+							fontSize: 30,
+							fontWeight: "bold",
+							margin: 30,
+						},
+						animationEnabled: true,
+						axisY: {
+							title: axisY,
+							interval: 100,
+							maximum: 1000,
+							labelFontFamily: "Microsoft JhengHei",
+							labelFontSize: 20,
+							titleFontFamily: "Microsoft JhengHei",
+							titleFontSize: 25
+						},
+						axisX: {
+							title: axisX,
+							interval: 1,
+							gridThickness: 0,
+							labelFontSize: 20,
+							labelFontStyle: "normal",
+							labelFontWeight: "normal",
+							labelFontFamily: "Microsoft JhengHei",
+							titleFontFamily: "Microsoft JhengHei",
+							titleFontSize: 25
+						},
+						legend: {
+							verticalAlign: "bottom",
+							horizontalAlign: "center"
+						},
+						theme: "theme2",
+						data: [
+
+							{        
+								type: "column",
+								color: "#9999ff",								
+								//showInLegend: true, 
+								//legendMarkerColor: "grey",
+								//legendText: "MMbbl = one million barrels",
+								dataPoints: data
+							}   
+						]
+					}
+				);
+			chart.render();
+			
+			$(document).scroll(function(){
+				$('#panel').fadeOut("fast");
+			});
+		</script>
+		<style>
+			.subunit-boundary {
+				fill: none;
+				stroke: #fff;
+				stroke-linejoin: round;
+			}
+		</style>
+
+	</body>
+</html>
