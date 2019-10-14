@@ -5,7 +5,7 @@
 <link rel="shortcut icon" href="/static/img/Img/favicon.ico" />
 <meta name="Generator" content="Drupal 7 (http://drupal.org)" />
 <!-- <link rel="alternate" title="MITstory RSS" href="http://mitstory.mit.edu/rss.xml" /> -->
-<title>{% trans "實踐大學校務研究室" %}</title>
+<title>{% trans "月水瓶 @MINA 的人生研究室" %}</title>
 
   <!--<link href="/static/img/Img/favicon.ico" rel="icon" type="image/x-icon" />-->
 
@@ -49,14 +49,11 @@
 
   <div class="content">
     <ul class="menu">
-<li class="first leaf"><a href="/IntroIR" title="">關於IR</a></li>
-<li class="leaf"><a href="/Opendata" title="">公開資訊</a></li>
-<li class="leaf"><a href="/IssueAnaly" title="">議題分析</a></li>
-<li class="leaf"><a href="/IRdb" title="">IR資料庫</a></li>
-<li class="leaf"><a href="/Resource" title="">資源分享</a></li>
-<!--<li class="leaf"><a href="/" title="">IR研究資源連結</a></li>
-<li class="leaf"><a href="/" title="">關於</a></li> -->
-<li class="last leaf"><a href="/" title="">校務資料庫</a></li>
+<li class="first leaf"><a href="/IntroIR" title="">關於網站</a></li>
+<li class="leaf"><a href="/Opendata" title="">文章展覽</a></li>
+<li class="leaf"><a href="/IssueAnaly" title="">類別導覽</a></li>
+<li class="leaf"><a href="/IRdb" title="">文章分類</a></li>
+<li class="last leaf"><a href="/Resource" title="">作品分享</a></li>
 </ul>  </div>
 </div>
 
@@ -75,18 +72,8 @@
 <ul id="main-menu-links" class="links clearfix"><li class="menu-448 first"><a href="/IntroIR" title="">Education</a></li>
 <li class="menu-449"><a href="/Opendata" title="">Discovery</a></li>
 <li class="menu-452"><a href="/Resource" title="">Service</a></li>
-<!--{% if request.user.is_authenticated %} -->
 <li class="menu-450"><a href="/IssueAnaly" title="">Culture</a></li>
-<li class="menu-451"><a href="/IRdb" title="">People</a></li>
-<!--<li class="menu-452"><a href="/Resource" title="">Service</a></li>-->
-<li class="menu-478 last"><a href="/" title="">Timeline</a></li>
-<!--{% else %}-->
-<!--<li class="menu-450"><a href="/accounts/login/" title="">Culture</a></li>
-<li class="menu-451"><a href="/accounts/login/" title="">People</a></li>
-<li class="menu-478 last"><a href="/accounts/login/" title="">Timeline</a></li>
-{% endif %}-->
-<!--<li class="menu-452"><a href="/Resource" title="">Service</a></li>-->
-<!--<li class="menu-478 last"><a href="/" title="">Timeline</a></li>-->
+<li class="menu-451 last"><a href="/IRdb" title="">People</a></li>
 </ul>
 
 </nav>
@@ -95,18 +82,6 @@
 
 
  <div class="content">
-   <!--
- <form action="/" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
- <h2 class="element-invisible">Search form</h2>
-    <div class="form-item form-type-searchfield form-item-search-block-form">
-  <label class="element-invisible" for="edit-search-block-form--2">Search</label>
- <input title="Enter the terms you wish to search for." placeholder="搜尋" class="input-medium form-text form-search" type="search" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" />
-</div>
-<div class="form-actions form-wrapper" id="edit-actions"><input class="btn form-submit" type="submit" id="edit-submit" name="op" value="Go" /></div><input type="hidden" name="form_build_id" value="form-AoDV6tYwnMIJkIHs8YBo76J53j1bz00Z1myuUeUgnt0" />
-<input type="hidden" name="form_id" value="search_block_form" />
-</div>
-</div></form>
--->
 
 {% if request.user.is_authenticated %}
 
@@ -129,7 +104,7 @@
 </div>
 
 
-<a href="http://www.usc.edu.tw/" target="_blank" class="mit-icon"> <!--右上icon-->
+<a href="https://minayu.site/" target="_blank" class="mit-icon"> <!--右上icon-->
 
 
 <img src="/static/img/Img/ShihChien_bars.png" alt="MIT"></a>
@@ -151,28 +126,20 @@
 				<h2 style="color:orange;">{{ pages.subject }}</h2>
 {{ pages.intro }}
 
-			<!--	<div class="home-hover-popup" id="home-hover-discovery">The soul of MIT is research...</div>
-				<div class="home-hover-popup" id="home-hover-education">MIT has upheld its abiding commitment...</div>
-				<div class="home-hover-popup" id="home-hover-culture">MIT has created a culture of inclusion...</div>
-				<div class="home-hover-popup" id="home-hover-people">MIT has been led by 17 presidents...</div>
-				<div class="home-hover-popup" id="home-hover-service">MIT maintains a commitment to serving...</div> -->
 			</div>
 			<div class="mobileHomeCopy visible-phone">
 				校務研究辦公室(IR)<br/>
-				<a href="/Opendata " class="home-hover" id="home-mobile-discovery">公開資訊</a>
-				<a href="/IntroIR " class="home-hover" id="home-mobile-education">關於IR</a>
+				<a href="/Opendata " class="home-hover" id="home-mobile-discovery">文章展覽</a>
+				<a href="/IntroIR " class="home-hover" id="home-mobile-education">關於網站</a>
         {% if request.user.is_authenticated %}
-				<a href="/IRdb" class="home-hover" id="home-mobile-people">IR資料庫</a>
-				<a href="/IssueAnaly" class="home-hover" id="home-mobile-culture">議題分析</a>
-        <a href="/Resource" class="home-hover" id="home-mobile-service">資源分享</a>
-        <a href="/" class="home-hover" id="home-mobile-service">校務資料庫</a>
+				<a href="/IRdb" class="home-hover" id="home-mobile-people">文章分類</a>
+				<a href="/IssueAnaly" class="home-hover" id="home-mobile-culture">類別導覽</a>
+        <a href="/Resource" class="home-hover" id="home-mobile-service">作品分享</a>
         {% else %}
-        <a href="/accounts/login/" class="home-hover" id="home-mobile-people">IR資料庫</a>
-				<a href="/accounts/login/" class="home-hover" id="home-mobile-culture">議題分析</a>
-        <a href="/Resource" class="home-hover" id="home-mobile-service">資源分享</a>
-        <a href="/" class="home-hover" id="home-mobile-service">校務資料庫</a>
+        <a href="/accounts/login/" class="home-hover" id="home-mobile-people">文章分類</a>
+				<a href="/accounts/login/" class="home-hover" id="home-mobile-culture">類別導覽</a>
+        <a href="/Resource" class="home-hover" id="home-mobile-service">作品分享</a>
         {% endif %}
-				<!--<a href="/Resource" class="home-hover" id="home-mobile-service">資源分享</a>-->
 
 				<div class="home-hover-popup" id="home-hover-mobile-discovery"></div>
 				<div class="home-hover-popup" id="home-hover-mobile-education"></div>
@@ -268,7 +235,7 @@
     <h2>SHIHCHIEN Logo</h2>
 
   <div class="content">
-    <p><a href="http://www.usc.edu.tw/" id="mit-logo" target="_blank">MIT Massachusetts Institute of Technology</a></p>
+    <p><a href="https://minayu.site/" id="mit-logo" target="_blank">MIT Massachusetts Institute of Technology</a></p>
   </div>
 </div>
   </div>
@@ -293,10 +260,6 @@
     <h2>Footer Menu</h2>
 
   <div class="content">
-  <!--  <ul class="menu"><li class="first leaf"><a href="/" title="">關於</a></li>
-<li class="leaf"><a href="/" title="">IR 研究資源連結</a></li>
-<li class="last leaf"><a href="/">聯絡我們</a></li>
-</ul> -->
  </div>
 </div>
   </div>

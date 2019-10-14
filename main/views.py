@@ -199,13 +199,13 @@ def ldapCheck(pusername, ppasswd):
 
 @login_required
 def alldocs_IRdb(request):
-    enter = Topics.objects.filter(cata_icon='people',irdb_cata='enter').order_by("-eventdate")
-    inschool = Topics.objects.filter(cata_icon='people',irdb_cata='inschool').order_by("-eventdate")
-    graduate = Topics.objects.filter(cata_icon='people',irdb_cata='graduate').order_by("-eventdate")
+    language = Topics.objects.filter(cata_icon='people',irdb_cata='language').order_by("-eventdate")
+    itthing = Topics.objects.filter(cata_icon='people',irdb_cata='itthing').order_by("-eventdate")
+    travel = Topics.objects.filter(cata_icon='people',irdb_cata='travel').order_by("-eventdate")
     return render(request, 'alldocs_IRdb.html', {
-        'enter': enter,
-        'inschool': inschool,
-        'graduate': graduate,
+        'language': language,
+        'itthing': itthing,
+        'travel': travel,
     })
 
 @login_required
