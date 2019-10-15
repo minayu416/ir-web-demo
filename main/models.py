@@ -15,7 +15,7 @@ class Topics(models.Model):
     CATA_ICON_CHOICES = (
         (about, '關於網站'),
         (discovery, '文章展覽'),
-        (culture, '類別導覽'),
+        (culture, '類別介紹'),
         (people, '文章分類'),
         (service, '作品分享')
     )
@@ -33,7 +33,7 @@ class Topics(models.Model):
     CATA_NET_CHOICES = (
         (Intr, '關於網站'),
         (Open, '文章展覽'), 
-        (Issu, '類別導覽'), 
+        (Issu, '類別介紹'), 
         (IRdb, '文章分類'), # 根據分類百文章 (Travel, CS, language)
         (Reso, '作品分享')
     )
