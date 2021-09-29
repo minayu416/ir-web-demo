@@ -1,7 +1,109 @@
+# IR Web Demo
 
-# 介紹網站
+There are two languages in this README, please take the elevator of `Table of Contents`
 
-本網站為本人於2016/4進入研究所學習網頁開發的第一個作品，同時也是起初幫忙學校新創立的處室製作的學校網站。
+此README有兩個語言版本，可以透過下列`目錄`抵達：
+
+
+## Table of Contents | 目錄
+
+- [[English Version] IR Web Demo](#en-introduction)
+- [[中文介紹] IR Web Demo](#cn-introduction)
+
+<br>
+
+# <span id="en-introduction">IR Web Demo</span>
+
+# Introduction
+
+IR Web is my first project of learning website development when 2016 Apr. the begining of master degree, also the website was made for new administration department of university when I was part-time website developer. 
+
+Currently, the department has changed the webiste, so I deleted some sensitive data and using other data fill it for demo the website I developed.
+
+![](https://minayu0416.files.wordpress.com/2019/10/e89ea2e5b995e5bfabe785a7-2019-10-15-e4b88be58d882.00.08.png)
+
+**The website is Chinese. I didn't develop English pages.**
+
+## Development
+
+Before developed website, I only learned 5 courses of C, I didn't touch any website development when Bachelor degree. 
+
+Thus, this project represents the record of learning website development from 0, used simple Html, Css and refered other frontend website, used php, Python and Django developed interface of back-end.
+
+- The first week - used w3schools for leaning html, css and tried to write simple one page html web.
+- The second - Choose a front-end of website, copied, moved and integrated the content I wanted. (2 weeks)
+- The fourth - Developed the front-end page, used all content by own made.
+- The fifth - Changed all pages to php (used 4 weeks)
+- The ninth - Changed all pages by Python, used Django structure (included leaning terminal, used 6 weeks)
+- The sixth - online
+
+All were done when studying and doing part-time job.
+
+<br>
+
+## Features
+
+### Front-end
+
+The front-end part includes five static demo pages and one index page, each page shows 10 content box at the bottom, sorted by date and using button to controll it, photo, date, topic and description can adjust.
+
+![](https://minayu0416.files.wordpress.com/2019/10/e89ea2e5b995e5bfabe785a7-2019-10-15-e4b88be58d883.12.34.png)
+
+**So the website is Chinese. We can see the content box at the bottom, there can define a main category at the top part then showed newest 10 posts.**
+
+In index page, it can put `tag` in each post for knowing the category of that post.
+
+All content can be adjusted by back-end platform.
+
+![](https://minayu0416.files.wordpress.com/2019/10/e89ea2e5b995e5bfabe785a7-2019-10-15-e4b88be58d883.13.17.png)
+
+There is a button called `all topics/posts` in the right and top place, it can connect to another page for showing all posts.
+
+<br>
+
+### Back-end
+
+Using, Python and Django for making the platform of back-end, like the photo.
+
+![](https://minayu0416.files.wordpress.com/2019/10/e89ea2e5b995e5bfabe785a7-2019-10-15-e4b88be58d883.21.48.png)
+
+The features are following:
+
+- [Introduction of front-end] fix, update
+- [Front-end content] create, delete, fix, update
+- [User permissions] create, delete, fix, update 
+- [Page access] create, delete, fix, update 
+
+
+#### User permissions
+
+Users can be defined for `Back-end manager`, which can enter and adjust the content by back-end page. Another is the `access of page`, there are some topics can not access if the users don't have access.
+
+`Back-end manager` page used Django native admin page, superuser created by terminal and other managers created by superuser.
+
+`Access of page`, identified by user from the right and top page, user need to login their account for viewing the content.
+
+![](https://minayu0416.files.wordpress.com/2019/10/e89ea2e5b995e5bfabe785a7-2019-10-15-e4b88be58d883.22.03.png)
+
+There are 5 categories on top navbar, the right 2 categories need access, and the right part can login and logout to check the access of users.
+
+![](https://minayu0416.files.wordpress.com/2019/10/e89ea2e5b995e5bfabe785a7-2019-10-15-e4b88be58d883.37.01.png)
+
+This is login page, it connect to the users data in school system, which users can use its account of school system login the web.
+
+All register and login data wull record in `Users` and `Registers`.
+
+***All English README introduction finish!***
+
+<br>
+
+<br>
+
+# <span id="cn-introduction">IR Web Demo</span>
+
+# 介紹
+
+IR 網站為2016/4進入研究所學習網頁開發的第一個作品，同時也是起初幫忙學校新創立的處室製作的學校網站。
 
 目前學校已無使用此網站，故將先前學校敏感資訊做刪除，使用其他內容填充之，並整理先前的程式碼。
 
@@ -9,9 +111,9 @@
 
 ## 開發過程
 
-學習網頁開發前僅修過五堂C語言課程，大學無碰過網頁開發。
+學習網頁開發前僅修過五堂C語言課程，大學沒有接觸過網頁開發。
 
-此作品代表著本人於網頁開發領域從0開始學習的紀錄，使用語言為簡單的Html, css，參考別的網站的前端，並陸續使用php, python的django架構自行開發後端介面。
+這個網頁是代表著本人於網頁開發領域從0開始學習的紀錄，使用語言為簡單的Html, css，參考別的網站的前端，並陸續使用php, python的django架構自行開發後端介面。
 
 - 第一週進度 - 使用 w3schools 學習html, css 並嘗試寫出簡單的一頁前端網頁
 - 第二週 - 選取一個網頁前端，搬過來改成自己欲使用的內容(大約耗費兩週)
